@@ -1,0 +1,16 @@
+services:
+  web:
+    build: .
+    ports:
+      - "80:80"
+      - "443:443"
+    environment:
+      - APP_DOMAIN=yourdomain.com
+      - ACME_DIRECTORY_URL=https://acme-v02.harica.gr/acme/<hash>/directory
+      - ACME_EAB_KID=your-kid
+      - ACME_EAB_HMAC=your-hmac
+    volumes:
+      - acme_data:/usr/local/apache2/md
+
+volumes:
+  acme_data:
